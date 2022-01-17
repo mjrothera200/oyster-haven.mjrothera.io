@@ -3,7 +3,8 @@ import { Component } from 'react';
 
 import { Breadcrumb, BreadcrumbItem } from 'carbon-components-react';
 
-import { KPI } from '../../components/KPI/KPI';
+import { KPI, WindKPI } from '../../components/KPI';
+
 class LandingPage extends Component {
   state = {
     data: '',
@@ -44,23 +45,12 @@ class LandingPage extends Component {
   componentDidMount() {
     console.log('Landing Page mounted');
     this.getLatest();
-    /*
+    
     this.timerID = setInterval(
-      () => this.update(),
-      1000
+      () => this.getLatest(),
+      1000*60*15
     );
-    */
-  }
-
-  update() {
-    //console.log("Updating State")
-    const obj = { temp: { value: 24, timestamp: 1642429005 } };
-    this.setState(() => {
-      return {
-        data: JSON.stringify(obj),
-        value: 99,
-      };
-    });
+    
   }
 
   componentWillUnmount() {
@@ -98,7 +88,7 @@ class LandingPage extends Component {
             />
           </div>
           <div className="bx--col-md-4 bx--col-lg-4">
-            <KPI
+            <WindKPI
               title="Wind"
               fieldname="wind"
               fieldunits="mph"

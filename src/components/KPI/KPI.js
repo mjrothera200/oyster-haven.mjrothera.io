@@ -11,6 +11,7 @@ class KPI extends Component {
       fieldvalue: props.fieldvalue,
       fieldtimestamp: props.fieldtimestamp,
       fieldunits: props.fieldunits,
+      fieldextra: props.fieldextra,
       data: props.data,
       error: null,
     };
@@ -57,6 +58,15 @@ class KPI extends Component {
     }
   }
 
+  updateFieldValue(obj, value, ago) {
+
+    this.setState({
+      fieldvalue: value,
+      fieldtimestamp: ago,
+    });
+
+  }
+
   update(data) {
     console.log('Refreshing KPI Data');
 
@@ -74,10 +84,8 @@ class KPI extends Component {
             this.timeSince(obj[this.state.fieldname].timestamp) +
             ' ago';
 
-          this.setState({
-            fieldvalue: obj[this.state.fieldname].value,
-            fieldtimestamp: ago,
-          });
+          this.updateFieldValue(obj, obj[this.state.fieldname].value, ago)
+          
         } else {
           //console.log("Could not find fieldname of '" + this.state.fieldname + "' in data set")
         }
@@ -111,9 +119,11 @@ class KPI extends Component {
                   {this.state.fieldunits && <div>{this.state.fieldunits}</div>}
                 </span>
               </div>
+              
+                
+              
             </div>
             <div className="my-widget-top-right">
-              <i className="fa fa-diamond" />
             </div>
           </div>
           <div className="my-widget-bottom">
@@ -123,7 +133,9 @@ class KPI extends Component {
               )}
             </div>
 
-            <div className="my-widget-bottom-right" />
+            <div className="my-widget-bottom-right">
+            {this.state.fieldextra && <div>{this.state.fieldextra}</div>}
+            </div>
           </div>
         </div>
       </div>
@@ -137,6 +149,7 @@ KPI.defaultProps = {
   fieldvalue: 'N/A',
   fieldtimestamp: 'N/A',
   fieldunits: 'º',
+  fieldextra: '',
   data: '',
 };
 
