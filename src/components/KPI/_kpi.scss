@@ -1,0 +1,59 @@
+.my-widget-parent {
+  height: 100%;
+  padding: 1vw;
+  border-top: 4px solid #88bc3f;
+  color: #8e8d8d;
+}
+
+.my-widget-top {
+  display: flex;
+  height: 90%;
+}
+
+.my-widget-top-left {
+  flex-grow: 0.6;
+}
+
+.my-widget-title {
+  height: 20%;
+  font-size: 1.7vw;
+}
+
+.my-widget-value {
+  color: #88bc3f;
+  height: 80%;
+  padding: 2vw;
+  font-size: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.my-widget-currency {
+  font-size: 2.4vw;
+  position: relative;
+  top: -0.5vw;
+}
+
+.my-widget-top-right {
+  flex-grow: 0.4;
+  font-size: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-widget-bottom {
+  display: flex;
+  height: 10%;
+  font-size: 1vw;
+  color: #8e8d8d;
+}
+
+.my-widget-bottom-left {
+  flex-grow: 1;
+}
+
+.my-widget-bottom-right {
+  flex-grow: 1;
+}

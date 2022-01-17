@@ -1,0 +1,4 @@
+
+"AWS4-HMAC-SHA256 Credential=AKIA5NMZPTANLRG36ET5/20220116/us-east-1/iotdevicegateway/aws4_request, SignedHeaders=accept;host;x-amz-date, Signature=b198c324157b8400ebe73ede5584a12ac32eee215bd824f0e0ba11e4b89d5926"
+
+iAWS4-HMAC-SHA256 Credential=AKIA5NMZPTANLRG36ET5/20220116/us-east-1/iotdevicegateway/aws4_request, SignedHeaders=host;x-amz-date, Signature=a524adc0fc3807151913d13db57ea68928a78c85a70a7791f4b5b31057ac967e
