@@ -1,6 +1,6 @@
 
 import { KPI } from './KPI';
-
+import { Windy32 } from '@carbon/icons-react';
 class WindKPI extends KPI {
 
     updateFieldValue(obj, value, ago) {
@@ -28,6 +28,9 @@ class WindKPI extends KPI {
 
     }
 
+    getIcon() {
+        return <Windy32 />
+      }
 
 
 }

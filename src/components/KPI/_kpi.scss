@@ -16,14 +16,14 @@
 
 .my-widget-title {
   height: 20%;
-  font-size: 1.7vw;
+  font-size: 1.7em;
 }
 
 .my-widget-value {
   color: #88bc3f;
   height: 80%;
   padding: 2vw;
-  font-size: 5vw;
+  font-size: 5em;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -31,27 +31,28 @@
 
 .my-widget-subtitle {
   height: 20%;
-  font-size: 1vw;
+  font-size: 1em;
 }
 
 .my-widget-currency {
-  font-size: 2.4vw;
+  font-size: .5em;
   position: relative;
   top: -0.5vw;
 }
 
 .my-widget-top-right {
   flex-grow: 0.4;
-  font-size: 5vw;
+  font-size: 5em;
   display: flex;
   align-items: center;
   justify-content: center;
+  vertical-align: top;
 }
 
 .my-widget-bottom {
   display: flex;
   height: 10%;
-  font-size: 1vw;
+  font-size: 1em;
   color: #8e8d8d;
 }
 

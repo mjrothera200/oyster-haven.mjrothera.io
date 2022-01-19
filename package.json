@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@carbon/grid": "10.17.0",
-    "@carbon/icons-react": "10.22.0",
+    "@carbon/icons-react": "^10.45.0",
     "aws-amplify": "^4.3.12",
     "aws-api-gateway-client": "^0.3.7",
     "aws4fetch": "^1.0.13",

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
 
+import { Temperature32 } from '@carbon/icons-react';
+
 class KPI extends Component {
   state = {};
   constructor(props) {
@@ -85,7 +87,7 @@ class KPI extends Component {
             ' ago';
 
           this.updateFieldValue(obj, obj[this.state.fieldname].value, ago)
-          
+
         } else {
           //console.log("Could not find fieldname of '" + this.state.fieldname + "' in data set")
         }
@@ -104,6 +106,10 @@ class KPI extends Component {
     }
   }
 
+  getIcon() {
+    return <Temperature32 />
+  }
+
   render() {
     return (
       <div>
@@ -119,11 +125,9 @@ class KPI extends Component {
                   {this.state.fieldunits && <div>{this.state.fieldunits}</div>}
                 </span>
               </div>
-              
-                
-              
             </div>
             <div className="my-widget-top-right">
+              {this.getIcon()}
             </div>
           </div>
           <div className="my-widget-bottom">
@@ -134,7 +138,7 @@ class KPI extends Component {
             </div>
 
             <div className="my-widget-bottom-right">
-            {this.state.fieldextra && <div>{this.state.fieldextra}</div>}
+              {this.state.fieldextra && <div>{this.state.fieldextra}</div>}
             </div>
           </div>
         </div>
