@@ -98,7 +98,7 @@ class LandingPage extends Component {
           <div className="bx--col-md-4 bx--col-lg-4">
             <RainKPI
               title="Rain"
-              fieldname="rain"
+              fieldname="rainfall"
               fieldunits="inches"
               data={this.state.data}
             />
