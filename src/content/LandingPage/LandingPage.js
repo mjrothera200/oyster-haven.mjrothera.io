@@ -45,12 +45,12 @@ class LandingPage extends Component {
   componentDidMount() {
     console.log('Landing Page mounted');
     this.getLatest();
-    
+
     this.timerID = setInterval(
       () => this.getLatest(),
-      1000*60*15
+      1000 * 60 * 15
     );
-    
+
   }
 
   componentWillUnmount() {
@@ -99,7 +99,17 @@ class LandingPage extends Component {
             <RainKPI
               title="Rain"
               fieldname="rainfall"
-              fieldunits="inches"
+              fieldunits='"'
+              data={this.state.data}
+            />
+          </div>
+        </div>
+        <div className="bx--row landing-page__r3">
+          <div className="bx--col-md-4 bx--col-lg-4">
+            <KPI
+              title="Water Temperature"
+              fieldname="watertemp"
+              fieldunits="º"
               data={this.state.data}
             />
           </div>

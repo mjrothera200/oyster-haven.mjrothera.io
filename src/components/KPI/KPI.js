@@ -47,11 +47,17 @@ class KPI extends Component {
       return parseInt(secondsPast / 3600) + 'h';
     }
     if (secondsPast > 86400) {
+      // convert to days
+      return parseInt(secondsPast / (3600 * 24)) + ' days';
+    }
+    
+    if (secondsPast > 86400) {
       const day = timeStamp.getDate();
       const month = timeStamp
         .toDateString()
         .match(/ [a-zA-Z]*/)[0]
         .replace(' ', '');
+      console.log("Month: "+month)
       const year =
         timeStamp.getFullYear() === now.getFullYear()
           ? ''
