@@ -3,67 +3,69 @@ import { Component } from 'react';
 
 import TrendChart from '../../components/TrendChart';
 
-
-const MSEC_DAILY = 86400000;
-
 class TrendsPage extends Component {
 
 
   state = {
     data: [{ x: 0, y: 0 }],
-    value: 0,
-    lastDrawLocation: null,
-    crosshairValues: [],
-    hintValue: -1
+    hints: [],
+    yunits: '',
+    xtitle: '',
+    ytitle: ''
   };
   constructor(props) {
     super(props);
     this.state = {
       data: [{ x: 0, y: 0 }],
-      value: 0,
-      lastDrawLocation: null,
-      crosshairValues: [],
-      hintValue: -1
+      hints: [],
+      yunits: '',
+      xtitle: '',
+      ytitle: ''
     };
   }
 
   getTrends() {
-
-    const timestamp = new Date('September 9 2017').getTime();
-
-    this.setState(() => {
-      return {
-        data: [
-          { x: timestamp + MSEC_DAILY, y: 42.9 },
-          { x: timestamp + MSEC_DAILY * 2, y: 41.2 },
-          { x: timestamp + MSEC_DAILY * 3, y: 27 },
-          { x: timestamp + MSEC_DAILY * 4, y: 24.8 }
-        ],
-        crosshairValues: [],
-        hintValue: 2
-      };
-    });
-
+    const headers = { 'x-api-key': process.env.REACT_APP_OYSTER_HAVEN_QUERY };
+    try {
+      var url = new URL("https://ed4b9t53ua.execute-api.us-east-1.amazonaws.com/prod/historical"),
+        params = { measure: "watertemp", timeframe: 1 }
+      Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+      fetch(
+        url,
+        {
+          method: 'GET',
+          headers,
+        }
+      )
+        .then(response => response.json())
+        .then(json => {
+          console.log(json);
+          this.setState(() => {
+            return {
+              data: json.dataset,
+              hints: json.hints,
+              ytitle: json.metadata.ytitle,
+              yunits: json.metadata.yunits,
+              xtitle: 'Month to Date'
+            };
+          });
+        });
+    } catch (error) {
+      console.log('Error: ' + error);
+    }
   }
+
   // Lifecycle methods
   componentDidMount() {
     console.log('TrendsPage mounted');
+    this.getTrends()
 
-    
-    this.timerID = setInterval(
-      () => this.getTrends(),
-      1000 * 5
-    );
-    
 
   }
 
   componentWillUnmount() {
     console.log('Trends Page unmounted');
   }
-
-  
-
 
   render() {
 
@@ -76,9 +78,12 @@ class TrendsPage extends Component {
         </div>
         <div className="bx--row trends-page__r3">
           <TrendChart
-          title="Temperatire"
-          fieldunits="º"
-          data={this.state.data}
+            title="Temperature"
+            yunits={this.state.yunits}
+            ytitle={this.state.ytitle}
+            xtitle={this.state.xtitle}
+            data={this.state.data}
+            hints={this.state.hints}
           />
         </div>
         <div className="bx--row trends-page__r3">

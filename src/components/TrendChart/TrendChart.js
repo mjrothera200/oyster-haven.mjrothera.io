@@ -1,5 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
+import moment from 'moment';
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
     FlexibleWidthXYPlot,
@@ -15,23 +18,19 @@ import {
 class TrendChart extends Component {
     state = {
         data: [{ x: 0, y: 0 }],
-        value: 0,
-        lastDrawLocation: null,
-        crosshairValues: [],
-        hintValue: -1
+        hints: [],
     };
     constructor(props) {
         super(props);
         // Check everything to see what is needed
         this.state = {
             title: props.title,
-            fieldunits: props.fieldunits,
+            yunits: props.yunits,
             data: props.data,
-            error: null,
-            value: 0,
-            lastDrawLocation: null,
-            crosshairValues: [],
-            hintValue: -1
+            hints: props.hints,
+            xtitle: props.xtitle,
+            ytitle: props.ytitle,
+            error: null
         };
     }
 
@@ -46,7 +45,7 @@ class TrendChart extends Component {
 
     
     componentWillReceiveProps(newProps) {
-        this.setState({ data: newProps.data });
+        this.setState({ data: newProps.data, hints: newProps.hints, xtitle: newProps.xtitle, ytitle: newProps.ytitle, yunits: newProps.yunits });
     }
 
 
@@ -55,7 +54,7 @@ class TrendChart extends Component {
      * @private
      */
     _onMouseLeave = () => {
-        this.setState({ crosshairValues: [] });
+       
     };
 
     /**
@@ -65,8 +64,7 @@ class TrendChart extends Component {
      * @private
      */
     _onNearestX = (value, { index }) => {
-        console.log("On Nearest X")
-        //this.setState({ crosshairValues: this.state.data.map(d => d[index]) });
+        
     };
 
     render() {
@@ -77,18 +75,21 @@ class TrendChart extends Component {
                 >
                     <HorizontalGridLines />
                     <VerticalGridLines />
-                    <XAxis title="Day" />
-                    <YAxis title="Temperature" />
+                    <XAxis title={this.state.xtitle} />
+                    <YAxis title={this.state.ytitle} />
                     <LineSeries
                         data={this.state.data}
                     />
-                    {this.state.hintValue >= 0 &&
-                        <Hint value={this.state.data[this.state.hintValue]}>
+                    
+                    {this.state.hints.map((hint, index) => (
+                        <Hint key={hint[hint.type].x} value={hint[hint.type]}>
                             <div className="hint">
-                                <div>{this.state.data[this.state.hintValue].y}</div>
-                                <div>{this.state.data[this.state.hintValue].x}</div>
+                                <div><FontAwesomeIcon icon={faExclamationTriangle} /></div>
+                                <div>{hint[hint.type].y} {this.state.fieldunits}</div>
+                                <div>{moment(hint[hint.type].x).format("MM-DD-YYYY h:mm:ss")}</div>
                             </div>
                         </Hint>
+                    ))
                     }
                 </FlexibleWidthXYPlot>
         );
@@ -96,10 +97,12 @@ class TrendChart extends Component {
 }
 
 TrendChart.defaultProps = {
-    title: 'KPI',
-    fieldname: 'temp',
-    fieldunits: 'º',
-    data: '',
+    title: 'Trend Chart',
+    xtitle: 'N/A',
+    ytitle: 'N/A',
+    yunits: 'º',
+    data: [{ x: 0, y: 0 }],
+    hints: []
 };
 
 

@@ -20,6 +20,9 @@
   "dependencies": {
     "@carbon/grid": "10.17.0",
     "@carbon/icons-react": "^10.45.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "aws-amplify": "^4.3.12",
     "aws-api-gateway-client": "^0.3.7",
     "aws4fetch": "^1.0.13",
@@ -27,6 +30,7 @@
     "carbon-components-react": "7.25.0",
     "carbon-icons": "7.0.7",
     "crypto-js": "^4.1.1",
+    "moment": "^2.29.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "5.0.0",
