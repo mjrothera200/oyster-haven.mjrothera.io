@@ -34,7 +34,9 @@ const OysterHeader = () => (
           Oyster Haven
         </HeaderName>
         <HeaderNavigation aria-label="Oyster Haven">
-          <HeaderMenuItem href="/repos">Trends</HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/trends">
+            Trends
+          </HeaderMenuItem>
         </HeaderNavigation>
         <SideNav
           aria-label="Side navigation"
@@ -42,7 +44,7 @@ const OysterHeader = () => (
           isPersistent={false}>
           <SideNavItems>
             <HeaderSideNavItems>
-              <HeaderMenuItem href="/repos">Trends</HeaderMenuItem>
+              <HeaderMenuItem href="/trends">Trends</HeaderMenuItem>
             </HeaderSideNavItems>
           </SideNavItems>
         </SideNav>

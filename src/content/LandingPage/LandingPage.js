@@ -46,10 +46,12 @@ class LandingPage extends Component {
     console.log('Landing Page mounted');
     this.getLatest();
 
+    /*
     this.timerID = setInterval(
       () => this.getLatest(),
       1000 * 60 * 15
     );
+    */
 
   }
 
