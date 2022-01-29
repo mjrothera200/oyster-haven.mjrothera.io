@@ -82,7 +82,7 @@ class TrendChart extends Component {
                     />
                     
                     {this.state.hints.map((hint, index) => (
-                        <Hint value={hint[hint.type]}>
+                        <Hint key={hint[hint.type].x} value={hint[hint.type]}>
                             <div className="hint">
                                 <div><FontAwesomeIcon icon={faExclamationTriangle} /></div>
                                 <div>{hint[hint.type].y} {this.state.fieldunits}</div>
