@@ -8,7 +8,10 @@ const options = [
   { value: 'watertemp', label: 'Water Temperature (F)' },
   { value: 'temp', label: 'Outside Temperature (F)' },
   { value: 'wind', label: 'Wind Speed (mph)' },
-  { value: 'waterlight', label: 'Water Light (lumens)' }
+  { value: 'waterlight', label: 'Water Light (lumens)' },
+  { value: 'watertemprt', label: 'Water Temperature (real-time F)' },
+  { value: 'salinity', label: 'Salinity (mg/L)' },
+  { value: 'tds', label: 'Total Dissolved Solids (mg/L)' },
 ]
 
 class TrendsPage extends Component {
@@ -70,7 +73,7 @@ class TrendsPage extends Component {
           console.log(json);
           this.setState(() => {
             return {
-              data: json.dataset,
+              data: json.dataset.length > 0 ? json.dataset : [{ x: 0, y: 0 }],
               hints: json.hints,
               ytitle: json.metadata.ytitle,
               yunits: json.metadata.yunits,
@@ -103,7 +106,7 @@ class TrendsPage extends Component {
           this.getTrends()
           this.setState(() => {
             return {
-              summarydata: json.dataset,
+              summarydata: json.dataset.length > 0 ? json.dataset : [{ x: 0, y: 0 }],
               ytitle: json.metadata.ytitle,
               yunits: json.metadata.yunits,
               ythresholdlow: json.metadata.lowthreshold,

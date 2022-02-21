@@ -3,7 +3,7 @@ import { Component } from 'react';
 
 import { Breadcrumb, BreadcrumbItem } from 'carbon-components-react';
 
-import { KPI, WindKPI, RainKPI, HumidityKPI } from '../../components/KPI';
+import { KPI, WindKPI, RainKPI, HumidityKPI, WaterQualityKPI } from '../../components/KPI';
 
 class LandingPage extends Component {
   state = {
@@ -112,6 +112,22 @@ class LandingPage extends Component {
               title="Water Temperature"
               fieldname="watertemp"
               fieldunits="º"
+              data={this.state.data}
+            />
+          </div>
+          <div className="bx--col-md-4 bx--col-lg-4">
+            <WaterQualityKPI
+              title="Salinity"
+              fieldname="salinity"
+              fieldunits="m"
+              data={this.state.data}
+            />
+          </div>
+          <div className="bx--col-md-4 bx--col-lg-4">
+            <WaterQualityKPI
+              title="TDS"
+              fieldname="tds"
+              fieldunits="m"
               data={this.state.data}
             />
           </div>

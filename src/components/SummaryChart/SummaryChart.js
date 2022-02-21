@@ -239,9 +239,8 @@ export default class SummaryChart extends React.Component {
               }}
             />
             {this.state.hintValue ?
-              <Hint value={this.state.hintValue}>
-                <div className={(this.state.hintValue.y < this.state.ythresholdhigh) && (this.state.hintValue.y > this.state.ythresholdlow) ? "hint-normal" : "hint-abnormal"}>
-
+              <Hint value={this.state.hintValue} className={(this.state.hintValue.y < this.state.ythresholdhigh) && (this.state.hintValue.y > this.state.ythresholdlow) ? "hint-normal" : "hint-abnormal"}>
+                <div>
                   {(this.state.hintValue.y < this.state.ythresholdhigh) && (this.state.hintValue.y > this.state.ythresholdlow) ? null : <div><FontAwesomeIcon icon={faExclamationTriangle} /></div>}
                   <div>{this.state.hintValue.y} {this.state.fieldunits}</div>
                   <div>{moment(this.state.hintValue.x).format("MM-DD-YYYY h:mm:ss")}</div>

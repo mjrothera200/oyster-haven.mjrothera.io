@@ -83,8 +83,8 @@ class TrendChart extends Component {
                     data={this.state.data}
                 />
                 {this.state.hintValue ?
-                    <Hint value={this.state.hintValue}>
-                        <div className="hint">
+                    <Hint value={this.state.hintValue} className="hint">
+                        <div>
                             <div>{this.state.hintValue.y} {this.state.fieldunits}</div>
                             <div>{moment(this.state.hintValue.x).format("MM-DD-YYYY h:mm:ss")}</div>
                         </div>
