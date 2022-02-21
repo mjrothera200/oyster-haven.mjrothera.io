@@ -133,10 +133,19 @@ class TrendsPage extends Component {
       console.log("New Measure Selected: " + this.state.selectedMeasure)
       this.getSummary()
     }
+    if (prevState.targetmonth !== this.state.targetmonth) {
+      console.log("New Month Selected: " + this.state.targetmonth)
+      this.getTrends()
+    }
   }
 
   componentWillUnmount() {
     console.log('Trends Page unmounted');
+  }
+
+  handleMonthSelect = (datapoint) => {
+    console.log(datapoint);
+    this.setState({ targetmonth: datapoint.month });
   }
 
   handleMeasureChange = (selectedOption) => {
@@ -165,6 +174,7 @@ class TrendsPage extends Component {
             ydomainhigh={this.state.ydomainhigh}
             ythresholdlow={this.state.ythresholdlow}
             ythresholdhigh={this.state.ythresholdhigh}
+            measureChange={this.handleMonthSelect}
           />
         </div>
         <div className="bx--row trends-page__r3">

@@ -1,6 +1,29 @@
 .hint {
-    background-color: gray;
+  background-color: black;
+  opacity: 50%;
+  font-size: small;
+  color: white;
+  border-color: black;
+  border-style: solid;
+  border-width: 5px;
+}
+
+.hint-normal {
+    background-color: white;
     opacity: 50%;
     font-size: small;
-    color: red
+    color: black;
+    border-color: green;
+    border-style: solid;
+    border-width: 5px;
+  }
+
+  .hint-abnormal {
+    background-color: white;
+    opacity: 50%;
+    font-size: small;
+    color: black;
+    border-color: red;
+    border-style: solid;
+    border-width: 5px;
   }

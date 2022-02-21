@@ -1,8 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
 import moment from 'moment';
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
     FlexibleWidthXYPlot,
@@ -19,6 +17,7 @@ class TrendChart extends Component {
     state = {
         data: [{ x: 0, y: 0 }],
         hints: [],
+        hintValue: null
     };
     constructor(props) {
         super(props);
@@ -30,7 +29,8 @@ class TrendChart extends Component {
             hints: props.hints,
             xtitle: props.xtitle,
             ytitle: props.ytitle,
-            error: null
+            error: null,
+            hintValue: null
         };
     }
 
@@ -43,18 +43,18 @@ class TrendChart extends Component {
         console.log('Trend Chart unmounted');
     }
 
-    
+
     componentWillReceiveProps(newProps) {
         this.setState({ data: newProps.data, hints: newProps.hints, xtitle: newProps.xtitle, ytitle: newProps.ytitle, yunits: newProps.yunits });
     }
 
 
     /**
-     * Event handler for onMouseLeave.
-     * @private
-     */
+      * Event handler for onMouseLeave.
+      * @private
+      */
     _onMouseLeave = () => {
-       
+        this.setState({ hintValue: null });
     };
 
     /**
@@ -64,34 +64,35 @@ class TrendChart extends Component {
      * @private
      */
     _onNearestX = (value, { index }) => {
-        
+        //console.log(value)
+        this.setState({ hintValue: value })
     };
 
     render() {
         return (
-                <FlexibleWidthXYPlot
-                    height={300}
-                    xType="time"
-                >
-                    <HorizontalGridLines />
-                    <VerticalGridLines />
-                    <XAxis title={this.state.xtitle} />
-                    <YAxis title={this.state.ytitle} />
-                    <LineSeries
-                        data={this.state.data}
-                    />
-                    
-                    {this.state.hints.map((hint, index) => (
-                        <Hint key={hint[hint.type].x} value={hint[hint.type]}>
-                            <div className="hint">
-                                <div><FontAwesomeIcon icon={faExclamationTriangle} /></div>
-                                <div>{hint[hint.type].y} {this.state.fieldunits}</div>
-                                <div>{moment(hint[hint.type].x).format("MM-DD-YYYY h:mm:ss")}</div>
-                            </div>
-                        </Hint>
-                    ))
-                    }
-                </FlexibleWidthXYPlot>
+            <FlexibleWidthXYPlot
+                height={300}
+                xType="time"
+            >
+                <HorizontalGridLines />
+                <VerticalGridLines />
+                <XAxis title={this.state.xtitle} />
+                <YAxis title={this.state.ytitle} />
+                <LineSeries
+                    onNearestX={this._onNearestX}
+                    data={this.state.data}
+                />
+                {this.state.hintValue ?
+                    <Hint value={this.state.hintValue}>
+                        <div className="hint">
+                            <div>{this.state.hintValue.y} {this.state.fieldunits}</div>
+                            <div>{moment(this.state.hintValue.x).format("MM-DD-YYYY h:mm:ss")}</div>
+                        </div>
+                    </Hint>
+                    : null}
+
+
+            </FlexibleWidthXYPlot>
         );
     }
 }
