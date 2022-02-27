@@ -1,0 +1,46 @@
+
+.storybook-body {
+    margin: 15px;
+    text-align: justify;
+    font-size: 1.2rem;
+}
+.storybook-img-left {
+    float: left; 
+    margin: 5px;
+    padding: 0 10px 0 0;
+    max-width: 20%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+.storybook-img-right {
+    float: right; 
+    margin: 5px;
+    padding: 0 10px 0 0;
+    max-width: 20%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.storybook-img-small {
+    max-width: 20%;
+}
+
+.storybook-img-medium {
+    max-width: 30%;
+}
+
+.storybook-img-large {
+    max-width: 60%;
+}
+
+.storybook-img-xlarge {
+    max-width: 75%;
+}
+
+.storybook-img-full {
+    max-width: 100%;
+}
+
+

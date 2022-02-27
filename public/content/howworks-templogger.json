@@ -1,0 +1,18 @@
+{
+    "contents": [
+        {
+            "id": 1,
+            "text": "As I started to research how to get some of my water quality data, I ran into several data logger solutions.  These solutions are meant to be deployed underwater in harsh environments for long periods of time, simply logging the data.  I found a very inexpensive solution for water temperature and light from <a href=\"https://www.amazon.com/dp/B075X2SWKN?psc=1&ref=ppx_yo2_dt_b_product_details\">Onset called the Pendant MX2202</a>.  Initially I was not thinking of light, but realized that this could also be a valuable measurement to understand how algal blooms in the summer may impact the amount of light that could filter to the bottom, which may impact sea grass growth.<br/><br/>The beauty of this device is the price point (~ $75) and the simplicty of use.  I simply configured the logger for the desired interval (every 15 minutes) and attached it to the oyster cage.  It reliably is logging and taking temperature readings and will do so for about 2.7 years before a battery change is required. ",
+            "image": "content/pendant-logger-mounted.gif",
+            "imageClass": "storybook-img-right storybook-img-medium",
+            "imageAlt": "Davis Weather Station on the Dock"
+        },
+        {
+            "id": 2,
+            "text": "Once a month I will walk down to the dock, pull up the oyster cage, and extract the data.  A very cool feature of the Pendant is the ability to connect to it via an app called Hoboware and download the data via Bluetooth.  The data can then be shared through a CSV file, which I uploaded to an AWS S3 bucket.  In the future, I may automate this process a bit more through my own custom iPhone extension to share directly to the AWS S3 bucket, but for now I just email it and upload the CSV file manually to the bucket.  Once the CSV file is uploaded to the S3 bucket, the upload triggers an event to an AWS Lambda function to parse the data and load it into the AWS Timestream database.<br/><br/>Overall I have found the process reliable.  Sometimes it takes some time from the Pendant to wake up after being pulled out of the water, but with a little patience the app eventually connects and I am able to extract the data.<br/><br/>Onset has several other long term loggers that work in this fashion such as <a href=\"https://www.onsetcomp.com/products/data-loggers/mx2501/\">Hobo PH and Temperature MX2501</a>.  However, the price point for these are ~ $750 which is too high for just one single measurement.  Onset also seems to be in transition with their product line from a physical connection method using a USB Shuttle to this new bluetooth method.  I will continue to monitor these set of products and would continue additional products should the price come down and also be compatible with the new bluetooth approach. ",
+            "image": "content/hoboware.gif",
+            "imageClass": "storybook-img-left",
+            "imageAlt": "Davis Console"
+        }
+    ]
+}

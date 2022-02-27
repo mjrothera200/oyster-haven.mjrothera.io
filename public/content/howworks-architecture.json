@@ -1,0 +1,11 @@
+{
+    "contents": [
+        {
+            "id": 1,
+            "text": "",
+            "image": "content/oyster-haven-architecture-aws.gif",
+            "imageClass": "storybook-img-left storybook-img-full",
+            "imageAlt": "Oyster Haven Serverless Architecture on AWS"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "contents": [
+        {
+            "id": 1,
+            "text": "There were numerous options for measuring water quality, but the issue was either a) the solution was too expensive, or b) the solution would involve coming up with a waterproof solution capable of withstanding the harsh marine environment.  I came across an RS485 Modbus to Lora Wan converter from <a href=\"https://www.dragino.com/products/lora-lorawan-end-node/item/167-rs485-bl.html\">Dragino called the RS485-BL</a>.  This device can integrate with a wide variety of industrial sensors over a standard called <a href=\"https://en.wikipedia.org/wiki/Modbus\">Modbus</a>.  The solution runs on extremely low power with an on-board battery and communicates wirelessly over a protocol called <a href=\"https://en.wikipedia.org/wiki/LoRa\">LORA</a>.  LORA offers extremely long ranges of wireless communication, which is about 3 miles in urban areas and up to 10 miles in rural areas.  This has enormous potential for water quality monitoring on the bay by being able to collect a wide range of water monitoring points from a single gateway.<br/><br/>  For the sensor, I decided to get started with a <a href=\"https://www.seeedstudio.com/EC-RS485-p-4848.html\">MODBUS Conductivity sensor from Seeed Studio</a> which would provide salinity and TDS (Total Dissolved Solids).  My intent is to add on over time with <a href=\"https://envirodiy.github.io/ModularSensors/group__yosemitech__group.html\">additional MODBUS enabled sensors</a> with Dissolved Oxygen, PH.  If I could find one to measure Nitrates it would be extremely beneficial.",
+            "image": "content/lora-modbus-sensornode.gif",
+            "imageClass": "storybook-img-right storybook-img-medium",
+            "imageAlt": "Lora Modbus Sensor Node"
+        },
+        {
+            "id": 2,
+            "text": "Next, a gateway is required to take the LORA packets and forward to the AWS Cloud.  Again, Dragino had a nice solution with the <a href=\"https://www.dragino.com/products/lora-lorawan-gateway/item/148-lps8.html\">LPS8 Gateway</a>.  This gateway listens for LORA devices and can be configured to send the data in a number of different ways.  It happened to support AWS IoT Core out of the box, which I configured and after a number of steps setting up Wireless Devices portion on AWS IoT Core, I was able to receive data into the AWS environment.  After the message is received on AWS IoT Core, an <a href=\"https://github.com/mjrothera200/aws-lambda-lora-waterquality-ingestion\">AWS Lambda function</a> decodes the payload and sends it to AWS Timestream.",
+            "image": "content/dragino-lora-gateway.gif",
+            "imageClass": "storybook-img-left",
+            "imageAlt": "Dragino Lora Gateway"
+        }
+    ]
+}

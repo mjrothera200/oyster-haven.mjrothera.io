@@ -1,0 +1,19 @@
+{
+    "contents": [
+        {
+            "id": 1,
+            "text": "Explained by the  <a href=\"https://www.umces.edu/oysters/history\">University of Maryland Center for Environmental Science</a>, Oysters have a longstanding history in Chesapeake Bay. In the early 17th century, Capt. John Smith described oysters lying 'as thick as stones.' Elizabeth North, an oyster scientist at Horn Point Laboratory, said they had been so abundant that their reefs neared the water’s surface, sometimes becoming navigational hazards.  At the end of the 19th century, it was estimated that more than 15 million bushels of oysters were being harvested annually from the Maryland portion of the Bay. By 2011, the oyster population in the upper Chesapeake Bay was estimated to be 0.3 percent of population levels of early 1800s due to overfishing, habitat loss, and disease, according to a study led by Mike Wilberg, a fisheries scientist with the Chesapeake Biological Laboratory.  Overharvesting oysters did more than deplete the resource. Every time an oyster leaves the water, a piece of the habitat oysters and other Bay species need is also lost. Between 1980 and the time of the study three decades later, suitable habitat declined about 70 percent. The number of oysters were already falling rapidly by this time due to two diseases, Dermo and MSX, which started spreading through the Bay in the late 1950s and early 1960s.",
+            "image": "content/large-oyster-reef.gif",
+            "imageClass": "storybook-img-left storybook-img-medium",
+            "imageAlt": "Oyster Reef in the Chesapeake Bay"
+        },
+        {
+            "id": 2,
+            "text": "My mother-inlaw often talks about being able to see straight to the bottom of the bay.  In current times we have seen the water quality rapidly decline.  However, according to <a href=\"https://blog.nature.org/science/2013/09/10/restoring-oyster-reefs/\">researchers at the Conservancy's Virginia Coast Reserve</a>, Oysters can play a big role in removing harmful nitrogen and other nutrients from the water.  A single oyster can clean a bath tub full of water in under one hour.  Imagine what a restoration of reefs up and down the bay could do! ",
+            "image": "content/oyster.gif",
+            "imageClass": "storybook-img-right storybook-img-large",
+            "imageAlt": "Marcus with an Oyster"
+        }
+
+    ]
+}

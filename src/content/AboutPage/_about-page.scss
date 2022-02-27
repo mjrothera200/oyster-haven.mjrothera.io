@@ -1,0 +1,49 @@
+@import './mixins.scss';
+@import './overrides.scss';
+
+.about-page_picture {
+  max-width: 100%;
+}
+
+.about-page__banner {
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-05 * 1;
+  @include about-page-background;
+}
+
+.about-page__heading {
+  @include carbon--type-style('productive-heading-05');
+}
+
+.about-page__r2 {
+  margin-top: rem(-40px);
+}
+
+.about-page__tab-content {
+  padding-top: $layout-05;
+  padding-bottom: $layout-05;
+}
+
+.about-page__subheading {
+  @include carbon--type-style('productive-heading-03');
+  @include carbon--font-weight('semibold');
+}
+
+.about-page__p {
+  @include carbon--type-style('productive-heading-03');
+  margin-top: $spacing-06;
+  margin-bottom: $spacing-08;
+
+  @include carbon--breakpoint-between((320px + 1), md) {
+    max-width: 75%;
+  }
+}
+
+.about-page__r3 {
+  padding-top: $spacing-04;
+  padding-bottom: $spacing-09;
+}
+
+.about-page__label {
+  @include carbon--type-style('heading-01');
+}

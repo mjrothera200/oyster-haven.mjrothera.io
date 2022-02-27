@@ -4,8 +4,11 @@
 @import 'carbon-components/scss/globals/scss/vars.scss';
 
 @import './components/KPI/kpi.scss';
+@import './components/StoryBook/storybook.scss';
 @import './components/TrendChart/trendchart.scss';
 @import './components/SummaryChart/summarychart.scss';
 @import './components/OysterHeader/oyster-header.scss';
 @import './content/LandingPage/landing-page.scss';
 @import './content/TrendsPage/trends-page.scss';
+@import './content/AboutPage/about-page.scss';
+@import './content/HowWorksPage/howworks-page.scss';
