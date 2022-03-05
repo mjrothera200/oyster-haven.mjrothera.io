@@ -107,27 +107,37 @@ class LandingPage extends Component {
           </div>
         </div>
         <div className="bx--row landing-page__r3">
-          <div className="bx--col-md-4 bx--col-lg-4">
+          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
             <KPI
               title="Water Temperature"
-              fieldname="watertemp"
+              fieldname="watertemprt"
               fieldunits="º"
               data={this.state.data}
             />
           </div>
-          <div className="bx--col-md-4 bx--col-lg-4">
+          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
             <WaterQualityKPI
               title="Salinity"
               fieldname="salinity"
-              fieldunits="m"
+              fieldunits="mg/L"
               data={this.state.data}
             />
           </div>
-          <div className="bx--col-md-4 bx--col-lg-4">
+        </div>
+        <div className="bx--row landing-page__r3">
+          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
             <WaterQualityKPI
               title="TDS"
               fieldname="tds"
-              fieldunits="m"
+              fieldunits="mg/L"
+              data={this.state.data}
+            />
+          </div>
+          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
+            <WaterQualityKPI
+              title="EC"
+              fieldname="ec"
+              fieldunits="us/cm"
               data={this.state.data}
             />
           </div>
