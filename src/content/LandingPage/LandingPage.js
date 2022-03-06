@@ -120,6 +120,9 @@ class LandingPage extends Component {
               title="Salinity"
               fieldname="salinity"
               fieldunits="mg/L"
+              starttitle="Fresh (< 500)"
+              midtitle="Brackish (500 - 30,000)"
+              endtitle="Ocean (30,000 - 50,000)"
               data={this.state.data}
             />
           </div>
@@ -130,11 +133,14 @@ class LandingPage extends Component {
               title="TDS"
               fieldname="tds"
               fieldunits="mg/L"
+              starttitle="Fresh (< 500)"
+              midtitle="Brackish (500 - 30,000)"
+              endtitle="Ocean (30,000 - 50,000)"
               data={this.state.data}
             />
           </div>
           <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
-            <WaterQualityKPI
+            <KPI
               title="EC"
               fieldname="ec"
               fieldunits="us/cm"

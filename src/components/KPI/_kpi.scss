@@ -48,11 +48,18 @@
   vertical-align: top;
 }
 
+my-widget-legend {
+  display: flex;
+  color: #8e8d8d;
+  justify-content: center;
+}
+
 .my-widget-bottom {
   display: flex;
   height: 10%;
   font-size: 1em;
   color: #8e8d8d;
+  padding-top: 1em;
 }
 
 .my-widget-bottom-left {
