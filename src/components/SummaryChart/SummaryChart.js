@@ -43,6 +43,7 @@ function buildRandomBinnedData(total) {
 export default class SummaryChart extends React.Component {
   state = {
     hintValue: null,
+    hintHelper: null,
     selectedIndex: null,
     data: [
       {
@@ -173,6 +174,7 @@ export default class SummaryChart extends React.Component {
       ythresholdlow: props.ythresholdlow,
       ythresholdhigh: props.ythresholdhigh,
       hintValue: null,
+      hintHelper: null,
       selectedIndex: null
     };
   }
@@ -205,6 +207,14 @@ export default class SummaryChart extends React.Component {
    */
   _onNearestX = (value, { index }) => {
     //console.log(value)
+
+    // Find the object
+    const found = this.state.data.find(element => element.x === value.x);
+    if (found) {
+      //console.log(found)
+      this.setState({ hintHelper: found })
+    }
+
     this.setState({ hintValue: value })
   };
   /**
@@ -238,12 +248,20 @@ export default class SummaryChart extends React.Component {
                 this.props.measureChange(datapoint)
               }}
             />
-            {this.state.hintValue ?
+            {this.state.hintValue && this.state.hintValue.y > 0 ?
               <Hint value={this.state.hintValue} className={(this.state.hintValue.y < this.state.ythresholdhigh) && (this.state.hintValue.y > this.state.ythresholdlow) ? "hint-normal" : "hint-abnormal"}>
                 <div>
                   {(this.state.hintValue.y < this.state.ythresholdhigh) && (this.state.hintValue.y > this.state.ythresholdlow) ? null : <div><FontAwesomeIcon icon={faExclamationTriangle} /></div>}
-                  <div>{this.state.hintValue.y} {this.state.fieldunits}</div>
-                  <div>{moment(this.state.hintValue.x).format("MM-DD-YYYY h:mm:ss")}</div>
+                  <div>{moment(this.state.hintValue.x + 86400000).format("MMMM")}</div>
+                  <div>Average: {this.state.hintValue.y} {this.state.yunits}</div>
+                  {this.state.hintHelper ?
+                    <div>
+                    <div>High: {this.state.hintHelper.yHigh} {this.state.yunits}</div>
+                    <div>Low: {this.state.hintHelper.yLow} {this.state.yunits}</div>
+                    <div>Earliest Reading: {this.state.hintHelper.yOpen} {this.state.yunits}</div>
+                    <div>Latest Reading: {this.state.hintHelper.yClose} {this.state.yunits}</div>
+                    </div>
+                  : null}
                 </div>
               </Hint>
               : null}

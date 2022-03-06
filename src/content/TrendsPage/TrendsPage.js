@@ -38,6 +38,7 @@ class TrendsPage extends Component {
 
   constructor(props) {
     super(props);
+    const d = new Date();
     this.state = {
       data: [{ x: 0, y: 0 }],
       hints: [],
@@ -51,7 +52,7 @@ class TrendsPage extends Component {
       ythresholdhigh: 75,
       selectedMeasure: 'watertemp',
       targetyear: 2022,
-      targetmonth: 1
+      targetmonth: d.getMonth() + 1
     };
   }
 
