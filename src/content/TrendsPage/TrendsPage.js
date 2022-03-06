@@ -31,7 +31,7 @@ class TrendsPage extends Component {
     ydomainhigh: 100,
     ythresholdlow: 25,
     ythresholdhigh: 75,
-    selectedMeasure: 'watertemp',
+    selectedMeasure: 'watertemprt',
     targetyear: 2022,
     targetmonth: 1
   };
@@ -50,7 +50,7 @@ class TrendsPage extends Component {
       ydomainhigh: 100,
       ythresholdlow: 25,
       ythresholdhigh: 75,
-      selectedMeasure: 'watertemp',
+      selectedMeasure: 'watertemprt',
       targetyear: 2022,
       targetmonth: d.getMonth() + 1
     };
@@ -164,7 +164,7 @@ class TrendsPage extends Component {
         <div className="bx--row trends-page__banner">
           <div className="bx--col-lg-16">
             <h1 className="trends-page__heading">Latest Trends</h1>
-            <Select options={options} onChange={this.handleMeasureChange} defaultValue={options[0]} />
+            <Select options={options} onChange={this.handleMeasureChange} defaultValue={options[4]} />
           </div>
         </div>
         <div className="bx--row trends-page__r3">
