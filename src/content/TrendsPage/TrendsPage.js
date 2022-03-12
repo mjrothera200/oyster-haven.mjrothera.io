@@ -10,6 +10,7 @@ const options = [
   { value: 'wind', label: 'Wind Speed (mph)' },
   { value: 'waterlight', label: 'Water Light (lumens)' },
   { value: 'watertemprt', label: 'Water Temperature (real-time F)' },
+  { value: 'ec', label: 'Conductivity (us/cm)' },
   { value: 'salinity', label: 'Salinity (mg/L)' },
   { value: 'tds', label: 'Total Dissolved Solids (mg/L)' },
 ]

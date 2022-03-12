@@ -107,7 +107,7 @@ class LandingPage extends Component {
           </div>
         </div>
         <div className="bx--row landing-page__r3">
-          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
+          <div className="bx--col">
             <KPI
               title="Water Temperature"
               fieldname="watertemprt"
@@ -115,7 +115,7 @@ class LandingPage extends Component {
               data={this.state.data}
             />
           </div>
-          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
+          <div className="bx--col">
             <WaterQualityKPI
               title="Salinity"
               fieldname="salinity"
@@ -128,7 +128,7 @@ class LandingPage extends Component {
           </div>
         </div>
         <div className="bx--row landing-page__r3">
-          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
+          <div className="bx--col">
             <WaterQualityKPI
               title="TDS"
               fieldname="tds"
@@ -139,7 +139,7 @@ class LandingPage extends Component {
               data={this.state.data}
             />
           </div>
-          <div className="bx--col-lg-8 bx--col-md-4 bx--col-sm-2">
+          <div className="bx--col">
             <KPI
               title="EC"
               fieldname="ec"
