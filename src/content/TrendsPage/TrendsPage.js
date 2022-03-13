@@ -23,7 +23,7 @@ class TrendsPage extends Component {
     summarydata: [
       { x: 0, y: 0 }
     ],
-    hints: [],
+    events: [],
     yunits: '',
     xtitle: '',
     sxtitle: '',
@@ -42,7 +42,7 @@ class TrendsPage extends Component {
     const d = new Date();
     this.state = {
       data: [{ x: 0, y: 0 }],
-      hints: [],
+      events: [],
       yunits: '',
       xtitle: '',
       sxtitle: '',
@@ -76,7 +76,7 @@ class TrendsPage extends Component {
           this.setState(() => {
             return {
               data: json.dataset.length > 0 ? json.dataset : [{ x: 0, y: 0 }],
-              hints: json.hints,
+              events: json.events,
               ytitle: json.metadata.ytitle,
               yunits: json.metadata.yunits,
               xtitle: 'Month to Date'
@@ -189,7 +189,7 @@ class TrendsPage extends Component {
             ytitle={this.state.ytitle}
             xtitle={this.state.xtitle}
             data={this.state.data}
-            hints={this.state.hints}
+            events={this.state.events}
           />
         </div>
         <div className="bx--row trends-page__r3">

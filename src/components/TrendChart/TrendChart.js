@@ -12,11 +12,12 @@ import {
     Hint
 } from 'react-vis';
 
+import OysterEvent from './OysterEvent';
 
 class TrendChart extends Component {
     state = {
         data: [{ x: 0, y: 0 }],
-        hints: [],
+        events: [],
         hintValue: null
     };
     constructor(props) {
@@ -26,7 +27,7 @@ class TrendChart extends Component {
             title: props.title,
             yunits: props.yunits,
             data: props.data,
-            hints: props.hints,
+            events: props.events,
             xtitle: props.xtitle,
             ytitle: props.ytitle,
             error: null,
@@ -45,7 +46,7 @@ class TrendChart extends Component {
 
 
     componentWillReceiveProps(newProps) {
-        this.setState({ data: newProps.data, hints: newProps.hints, xtitle: newProps.xtitle, ytitle: newProps.ytitle, yunits: newProps.yunits });
+        this.setState({ data: newProps.data, events: newProps.events, xtitle: newProps.xtitle, ytitle: newProps.ytitle, yunits: newProps.yunits });
     }
 
 
@@ -90,7 +91,21 @@ class TrendChart extends Component {
                         </div>
                     </Hint>
                     : null}
-
+                {this.state.events.map((event, index) => (
+                        <Hint key={event.x} value={event} align={{horizontal: 'auto', vertical: 'top'}}>
+                            <OysterEvent
+                                eventType={event.eventType}
+                                eventClassification={event.eventClassification}
+                                measure_name={event.measure_name}
+                                event_value={event.event_value}
+                                eventParm1={event.eventParm1}
+                                eventParm2={event.eventParm2}
+                                timestamp={event.x}
+                            />
+                        </Hint>
+                )
+                )
+                }
 
             </FlexibleWidthXYPlot>
         );
