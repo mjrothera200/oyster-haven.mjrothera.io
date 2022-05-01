@@ -15,6 +15,21 @@ const options = [
   { value: 'tds', label: 'Total Dissolved Solids (mg/L)' },
 ]
 
+const months = [
+  { value: 1, label: 'January' },
+  { value: 2, label: 'February' },
+  { value: 3, label: 'March' },
+  { value: 4, label: 'April' },
+  { value: 5, label: 'May' },
+  { value: 6, label: 'June' },
+  { value: 7, label: 'July' },
+  { value: 8, label: 'August' },
+  { value: 9, label: 'September' },
+  { value: 10, label: 'October' },
+  { value: 11, label: 'November' },
+  { value: 12, label: 'December' },
+]
+
 class TrendsPage extends Component {
 
 
@@ -76,7 +91,7 @@ class TrendsPage extends Component {
           this.setState(() => {
             return {
               data: json.dataset.length > 0 ? json.dataset : [{ x: 0, y: 0 }],
-              events: json.events,
+              events: json.events.length > 0 ? json.events: [{ x: 0, y: 0 }],
               ytitle: json.metadata.ytitle,
               yunits: json.metadata.yunits,
               xtitle: 'Month to Date'
@@ -157,7 +172,9 @@ class TrendsPage extends Component {
     this.setState({ selectedMeasure: selectedOption.value });
     //console.log(`Option selected:`, selectedOption.label);
   }
-
+  handleMonthChange = (selectedOption) => {
+    this.setState({ targetmonth: selectedOption.value });
+  }
   render() {
 
     return (
@@ -181,6 +198,9 @@ class TrendsPage extends Component {
             ythresholdhigh={this.state.ythresholdhigh}
             measureChange={this.handleMonthSelect}
           />
+        </div>
+        <div className="bx--col-lg-16">
+          <Select options={months} onChange={this.handleMonthChange} defaultValue={months[this.targetmonth - 1]} />
         </div>
         <div className="bx--row trends-page__r3">
           <TrendChart
