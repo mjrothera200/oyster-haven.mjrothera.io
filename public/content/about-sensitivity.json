@@ -3,14 +3,14 @@
         {
             "id": 1,
             "text": "Oysters thrive in estuaries such as the Chesapeake Bay.  An estuary is a partly enclosed body of water where salt and freshwater meet and mix. This water is called brackish water.  Oysters require hard bottom areas because if placed on soft bottom areas they will become buried and die. They also love to live at the edge of channels due to the good water flow, which will bring them more food. They thrive in brackish water from 2-26 feet deep.  Salinity (the amount of salt dissolved in water) will vary in estuaries. Water closer to the mouth of the freshwater source will have a lower salinity, whereas water located nearer to the ocean will have a greater salinity. Salinity is measured as ppt (parts per thousand).  Water having 10 parts salt to 1000 parts water is considered 1 0ppt. Below 12 ppt is considered low salinity, 12-20 ppt is medium and over 20 is high salinity. Oysters can survive in water that contains 5-35 ppt. Oysters thrive in salinity that ranges from 14-28 ppt.<br/><br/>One year we did not have a productive crop of oysters, and I began to wonder if there were variations in water quality that lead to oysters either thriving or not thriving.  In this particular year, we had a lot of rain which reduced the salinity, and the speculation was that the lower salinity levels affected the oyster spat in this particular year.",
-            "image": "content/oyster-reef.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/oyster-reef.gif",
             "imageClass": "storybook-img-left storybook-img-medium",
             "imageAlt": "Creating an Oyster Reef"
         },
         {
             "id": 2,
             "text": "According to <a href=\"https://mcny.org/sites/default/files/2017-11/OystersAndTheirHabitat_Handout.pdf\">A Report from the Future City Lab of New York</a>, the optimum water temperature for oysters to survive is between 68-90 degrees Fahrenheit, but adult oysters can tolerate water as cold as 38 degrees and as hot as 120 degrees for short periods of time.  Dissolved oxygen is oxygen that is present in water and available for organisms. Oysters can tolerate lower levels of dissolved oxygen than some marine life. They can survive above 20% saturation whereas most marine life requires at least 30% saturation.<br/><br/>I became curious to find out what were the primary factors that would help Oysters thrive, and if I could also measure a difference in water quality over time.  Aside from Salinity, Temperature, or Dissolved Oxygen, are there other parameters such as PH which may be worth measuring?",
-            "image": "content/oyster-bucket.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/oyster-bucket.gif",
             "imageClass": "storybook-img-right storybook-img-large",
             "imageAlt": "Marcus and his Oyster Bucket"
         }

@@ -3,14 +3,14 @@
         {
             "id": 1,
             "text": "As part of the oyster restoration effort, the Chesapeake Bay Foundation has a program for <a href=\"https://www.cbf.org/how-we-save-the-bay/programs-initiatives/maryland/oyster-restoration/oyster-gardening/\">Oyster Gardening</a>.  The program gives people the opportunity to help bring back this vital species by growing oysters alongside their docks. Once grown, the adult oysters are returned to the Chesapeake Bay Foundation for planting on sanctuary reefs.  Every year we pick up our Oyster Spat from a location in Solomon's Island, Maryland and bring them back to our home on the Patuxent River on Hellen Creek.",
-            "image": "content/oysters-foundation.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/oysters-foundation.gif",
             "imageClass": "storybook-img-left storybook-img-medium",
             "imageAlt": "Collecting Oysters from the Chesapeake Bay Foundation"
         },
         {
             "id": 2,
             "text": "To grow oysters, each participant builds a set of oyster cages from wire mesh, which will hang from the dock. The gardener also receives several thousand seed oysters.  Gardeners grow their oysters in the cages for about a year until the oysters are about one to two inches long.  The gardener then returns the adult oysters to CBF, and our staff plant the oysters onto sanctuary (non-harvest) reefs in Maryland waters.  The gardener starts over with a new batch of seed. The hope is that each gardener will continue to produce a new crop of healthy adult oysters year after year.  Pictured on the right, Marcus periodically washing the oysters to remove 'flat worm' which are harmful to the oysters.",
-            "image": "content/washing-oysters.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/washing-oysters.gif",
             "imageClass": "storybook-img-right storybook-img-large",
             "imageAlt": "Washing Oysters"
         }

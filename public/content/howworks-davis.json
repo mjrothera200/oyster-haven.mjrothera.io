@@ -3,21 +3,21 @@
         {
             "id": 1,
             "text": "As part of the overall monitoring solution, I wanted to incorporate actual outside weather conditions.  My father in-law already had a <a href=\"https://www.davisinstruments.com/products/vantage-vue-wireless-weather-station\">Davis Vantage Vue Weather Station</a>.  This is a great way to monitor local conditions which are often drastically different than what I get on the local Washington D.C news.  The weather station provides temperature, humidity, rainfall, wind speed and direction, and solar radiation.<br/><br/>As it relates to Oyster monitoring, I wanted to use the data to understand how the external weather affects the water quality.  For example, how much is the salinity and turbidity affected after large storms?  How fast does the outside temperature change the water temperature?  There are also situations where the oysters could be put at risk, such as long duration freeze events in combination with low tides where the oyster cages could become encased in ice and kill the oysters.",
-            "image": "content/davis-weather.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/davis-weather.gif",
             "imageClass": "storybook-img-left storybook-img-medium",
             "imageAlt": "Davis Weather Station on the Dock"
         },
         {
             "id": 2,
             "text": "The main issue was \"How would I be able to get the data up to my website for this type of analysis?\"<br/><br/>By default, Davis provides a proprietary console (pictured right) which provides a real-time display of the data from the weather station.  Davis offers two solutions to extract the data from the console, one of which is a data logger solution which attaches to the console to the extract the data, and the other a custom gateway solution to forward the weather data directly to their own cloud solution called <a href=\"https://www.davisinstruments.com/pages/weatherlink-cloud\">Weather Link</a>.  The <a href=\"https://www.davisinstruments.com/products/weatherlink-windows-usb\">data logger solution</a> is not real time and too expensive (~ $185).  The <a href=\"https://www.davisinstruments.com/products/enviromonitor-ip-gateway-wi-fi-ethernet\">IP gateway solution</a> to the weather link cloud is not only too expensive (~$625), but is also proprietary and I wanted to build my own cloud solution.",
-            "image": "content/davis-vantagevue.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/davis-vantagevue.gif",
             "imageClass": "storybook-img-right storybook-img-small",
             "imageAlt": "Davis Console"
         },
         {
             "id": 3,
             "text": "After a lot of research, I finally found a solution.  It turns out there are a lot of other people who want access to their own data in a cheaper and open format and they have found a way to <a href=\"https://www.muddydogs.life/2018/04/03/hacking-a-davis-wireless-vantage-pro2-weather-station-part-1-the-theory/\">access the Davis Weather Station data</a>  The weather station works on a 915 MHZ wireless signal which can be accessed within about 1000 feet, which happened to be my case from the house to the dock.  I found a <a href=\"https://github.com/HydroSense/FeatherM0_Davis_ISS_rx\">project on Github to tap into the Davis protocol</a> that runs on an <a href=\"https://www.amazon.com/dp/B01K62LWBC?psc=1&ref=ppx_yo2_dt_b_product_details\">Adafruit Feather RFM 69 Packet Radio</a> which retails for about $24 on Amazon.  This solution ran perfectly with no changes.  I was able to attach the Feather to my Raspberry PI using a standard USB cable.  I wrote a <a href=\"https://github.com/mjrothera200/davisgw-aws\">python program</a> to read from the serial device and send the data to AWS IoT Core and Voila - I have data flowing from the weather station to my AWS Cloud Solution!",
-            "image": "content/homemade-davis-gateway.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/homemade-davis-gateway.gif",
             "imageClass": "storybook-img-left storybook-img-medium",
             "imageAlt": "Homemade Davis Gateway with Raspberry PI and Feathre RFM69"
         }

@@ -3,14 +3,14 @@
         {
             "id": 1,
             "text": "With tax incentives being available in Maryland for Aquaculture Oyster Floats, the idea to combine water quality monitoring with the Oyster initiative makes good sense.  By creating a \"Connected Oyster Float\", one could not only be helping clean the bay with oysters, but also contribute back valuable water quality monitoring data to help monitor and measure on a regional basis.  While having immediate value to look at the conditions for the oyster, when done on a large scale an initiative like this could provide the Chesapeake Bay Foundation with valuable insights on a micro-regional basis to identify hotspot areas that may be contributing adversely to poor water quality.<br/><br/>Pictured at left is one of <a href=\"https://www.oystergardening.com/\">Captain Tom's Oyster Floats</a> which are quite popular in the area.",
-            "image": "content/oyster-float.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/oyster-float.gif",
             "imageClass": "storybook-img-left storybook-img-medium",
             "imageAlt": "An Oyster Float"
         },
         {
             "id": 2,
             "text": "The vision would be to embed the monitoring in an existing Oyster Float to create a connected float.  The LORA module and Modbus micro-controller would be waterproofed and encased in the PVC, with waterproof plugs allowing the antennae to extend from the top and the sensor probes to extend into the water.",
-            "image": "content/connected-float-concept.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/connected-float-concept.gif",
             "imageClass": "storybook-img-right storybook-img-medium",
             "imageAlt": "Connected Float Concept"
         }

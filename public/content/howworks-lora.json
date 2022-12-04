@@ -3,42 +3,42 @@
         {
             "id": 1,
             "text": "There were numerous options for measuring water quality, but the issue was either a) the solution was too expensive, or b) the solution would involve coming up with a waterproof solution capable of withstanding the harsh marine environment.  I came across an RS485 Modbus to Lora Wan converter from <a href=\"https://www.dragino.com/products/lora-lorawan-end-node/item/167-rs485-bl.html\">Dragino called the RS485-BL</a>.  This device can integrate with a wide variety of industrial sensors over a standard called <a href=\"https://en.wikipedia.org/wiki/Modbus\">Modbus</a>.  The solution runs on extremely low power with an on-board battery and communicates wirelessly over a protocol called <a href=\"https://en.wikipedia.org/wiki/LoRa\">LORA</a>.  LORA offers extremely long ranges of wireless communication, which is about 3 miles in urban areas and up to 10 miles in rural areas.  This has enormous potential for water quality monitoring on the bay by being able to collect a wide range of water monitoring points from a single gateway.<br/><br/>  For the sensor, I decided to get started with a <a href=\"https://www.seeedstudio.com/EC-RS485-p-4848.html\">MODBUS Conductivity sensor from Seeed Studio</a> which would provide salinity and TDS (Total Dissolved Solids).  My intent is to add on over time with <a href=\"https://envirodiy.github.io/ModularSensors/group__yosemitech__group.html\">additional MODBUS enabled sensors</a> with Dissolved Oxygen, PH.  If I could find one to measure Nitrates it would be extremely beneficial.",
-            "image": "content/lora-modbus-sensornode.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/lora-modbus-sensornode.gif",
             "imageClass": "storybook-img-right storybook-img-medium",
             "imageAlt": "Lora Modbus Sensor Node"
         },
         {
             "id": 2,
             "text": "Next, a gateway is required to take the LORA packets and forward to the AWS Cloud.  Again, Dragino had a nice solution with the <a href=\"https://www.dragino.com/products/lora-lorawan-gateway/item/148-lps8.html\">LPS8 Gateway</a>.  This gateway listens for LORA devices and can be configured to send the data in a number of different ways.  It happened to support AWS IoT Core out of the box, which I configured and after a number of steps setting up Wireless Devices portion on AWS IoT Core, I was able to receive data into the AWS environment.  After the message is received on AWS IoT Core, an <a href=\"https://github.com/mjrothera200/aws-lambda-lora-waterquality-ingestion\">AWS Lambda function</a> decodes the payload and sends it to AWS Timestream.",
-            "image": "content/dragino-lora-gateway.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/dragino-lora-gateway.gif",
             "imageClass": "storybook-img-left",
             "imageAlt": "Dragino Lora Gateway"
         },
         {
             "id": 3,
             "text": "With all of the parts in place it was time to hook everything together.  The first step is to connect the EC Modbus sensor to the Lora Sensor Node.  However, I discovered that the connectors on the EC sensor used 1/2\" screw threads which were incompatible with the terminal block and would not fit through the cable gland.  I first needed to remove the connectors and strip the wires to get them into the enclosure and connected to the green terminal block.   Thanks to the fine motor skills and infinite patience of my wife, she was able to help me thread these wires into that tiny space and get them connected to the 5 volt power and RS485 Modbus A/B inputs.  It would have been easier if the RS485-BL had a little more room to operate or offered a connector which was compatible with the screw thread connectors on the EC sensor.",
-            "image": "content/lora-cabling-challenges.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/lora-cabling-challenges.gif",
             "imageClass": "storybook-img-right storybook-img-medium",
             "imageAlt": "Cabling Challenges with Lora Sensor Node"
         },
         {
             "id": 4,
             "text": "After the sensor was connected, I powered on the RS485-BL sensor node.  The job now was to configure the sensor to query the EC Modbus device and return the payload through the Lora Wan protocol (and ultimately up to the cloud).  This involved using a serial interface through a <a href=\"https://www.amazon.com/dp/B07BBPX8B8?psc=1&ref=ppx_yo2_dt_b_product_details\">USB to Serial Adapter</a> which connects to inputs on the RS485-BL.  I used the 'screen' utility on the Mac to open a terminal and submitted old style AT commands to configure various aspect of the sensor node operation, such as which modbus registers to query and polling frequency.  One interesting aspect of this device was that there is a configuration which determines how long a 5 volt charge is sent to the EC sensor note prior to polling.  This conserves battery power by only supplying power to the sensor when it is needed.  A couple of times I received some odd readings and was wondering whether it had to do with not allowing enough time for the sensor to power up.  Fortunately I have not seen much of that with the 1 second power time I configured.",
-            "image": "content/lora-serial-interface.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/lora-serial-interface.gif",
             "imageClass": "storybook-img-left storybook-img-medium",
             "imageAlt": "Serial Interface to Lora Sensor Node"
         },
         {
             "id": 5,
             "text": "After some time configuring and learning the depths of the Hex based Modbus protocol, I was able to successfuly get payloads sent to the AWS IoT core.  The next step was to calibrate the sensors using standard solutions.  For this purpose, there are off the shelf solutions for <a href=\"https://www.amazon.com/Oakton-AO-00653-18-Conductivity-Standard-1413/dp/B01MS6HNT9/ref=sr_1_1_sspa?crid=VYP97XYNR471&keywords=oakton+1413&qid=1646579873&sprefix=oakton+1413\">1413 and 12880 us/cm from Oakton.</a> The task here was to raise the temperature to 25 degrees celsius with the connectivity probe in the solution, and then sent a Modbus command to either one of the registers corresponding to the correct solution.",
-            "image": "content/lora-ec-calibration.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/lora-ec-calibration.gif",
             "imageClass": "storybook-img-right storybook-img-medium",
             "imageAlt": "EC Calibration"
         },
         {
             "id": 7,
             "text": "After everything was configured and wired up, it was time to deploy to the dock.  I attached it to one of the pilings and let the EC probe to the bottom, pinning the wire down the length of the piling.  One lesson learned here was to pay attention to cable lengths as the default length of 15 feet was far too long, when all I needed was max 10 feet.  After I deployed this on the dock, I realized that i had left the default polling time to 10 minutes and I really wanted 15 minutes.  Would I have to uninstall it and hook up my serial interface again?  No!  One of the benefits of LoraWAN is the ability to send 'downlink' messages to the device from the cloud, through the gateway, and back to the sensor node over Lora.  This device happens to have a command ready to adjust the polling interval on the fly which is a nice feature of remote management for the LoraWAN devices.",
-            "image": "content/lora-deployed-piling.gif",
+            "image": "http://oyster-haven.mjrothera.io/content/lora-deployed-piling.gif",
             "imageClass": "storybook-img-left storybook-img-large",
             "imageAlt": "EC Calibration"
         }
